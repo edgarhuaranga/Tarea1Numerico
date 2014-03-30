@@ -29,6 +29,9 @@ class ErrorCal:
                 flx += n[i:]
                 break
         error = '%.17f' % (float(x) - float(flx))
+        error_relativo = '%17' % (float(error) - float(n))
         if error[0]=='-':
             error=error[1:]
-        return error, pot
+        if error_relativo[0]=='-':
+            error_relativo = error_relativo[1:]
+        return error_relativo, error, pot
