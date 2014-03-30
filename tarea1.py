@@ -25,7 +25,7 @@ def getErrorNum():
     errors = ErrorCal(mynum.get())
     relerr, abserr, absexp = errors.getAbsoluteError()
     #print abserr,absexp
-    texto = 'Error Absoluto:\n'+abserr+' x10^-' + str(absexp)+'\nError relativo:\n'+relerr+' x10^-' + str(absexp)
+    texto = 'Error Absoluto:\n'+abserr+' x10^' + str(absexp)+'\nError relativo:\n'+relerr+' x10^' + str(absexp)
     tkMessageBox.showinfo('Resultado', texto)
 
 def getSetFloat():
