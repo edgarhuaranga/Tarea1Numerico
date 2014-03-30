@@ -3,14 +3,14 @@ import sys
 class ErrorCal:
 
 
-    def __init__(self,num,epsilon):
+    def __init__(self,num):
         self.num = num
      
-    def getRelativeError():
+    def getRelativeError(self):
         pass
         return
         
-    def getAbsoluteError():
+    def getAbsoluteError(self):
         st = str(self.num)
         n = '%.52f' % float(st)
         pos_pto = n.find('.')
@@ -21,6 +21,7 @@ class ErrorCal:
  
         x = "0."
         flx = "0."
+        pot = 0
         for i in range(0,len(st)):
             if(n[i]!=st[i]):
                 pot = i-pos_pto-1
@@ -28,4 +29,6 @@ class ErrorCal:
                 flx += n[i:]
                 break
         error = '%.17f' % (float(x) - float(flx))
+        if error[0]=='-':
+            error=error[1:]
         return error, pot

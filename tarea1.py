@@ -3,9 +3,10 @@ from Tkinter import *
 import tkMessageBox
 import struct
 from FloatsClass import FloatsClass
+from ErrorCalc import ErrorCal
 
 mGui = Tk()
-
+mynum = DoubleVar()
 
 def getEpsilonMachine():
     eps = float(1)
@@ -21,8 +22,10 @@ def getLongPalabra():
     Label(mGui, text = texto,fg='blue').place(x=200,y=25)
 
 def getErrorNum():
-    #calcular error ,llamar objeto ErrorCal
-    texto = 'Aca ira\nun mensaje complicado con\n saltos de linea'
+    errors = ErrorCal(mynum.get())
+    abserr, absexp = errors.getAbsoluteError()
+    #print abserr,absexp
+    texto = 'Error Absoluto:\n'+abserr+' x10^-' + str(absexp)+'\nError relativo'
     tkMessageBox.showinfo('Resultado', texto)
 
 def getSetFloat():
@@ -38,7 +41,6 @@ def main():
     mbotonLongPalabra = Button(mGui, text = 'Longitud de Palabra',command = getLongPalabra).place(x=20,y=20)
     mbotonEpsilonMachine = Button(mGui, text = 'Epsilon de Maquina',command = getEpsilonMachine).place(x=20,y=60)
     
-    mynum = IntVar()
     mtextNum = Entry(mGui, textvariable = mynum).place(x=20,y=110)
     mbotonGetError = Button(mGui, text = 'Calcular error', command = getErrorNum).place(x=200, y=110)
     #print "El beta (base) es ",betha)
